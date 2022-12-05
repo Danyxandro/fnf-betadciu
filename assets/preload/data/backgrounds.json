@@ -1,0 +1,20 @@
+{
+	"bg": [
+		["test/CUT1", -300, -195, 0.7],
+		["test/CUT2", -300, -195, 0.7]
+	],
+	"firstPic":[
+		["beat/pic1", 0, 0, 1.15,"imposible-posible"],
+		["keen/BF-gato", 0, 0, 1.15,"growth"],
+		["keen/keen3", 0, 0, 1.35,"control"],
+		["OJ/arrive", 0, 0, 1.83,"impetus"],
+		["OJ/keen f", 0, 0, 1.83,"sadds"],
+		["OJ/portal active", 0, 0, 1.83,"csikos-post"],
+		["OJ/4-0", 100, -200, 1.5,"anger"],
+		["OJ/5-0", 0, 0, 1.83,"strange-comfort"]
+	],
+	"lastPic":[
+		["beat/ending 1", 0, 0, 1.15,"six-ft-under"],
+		["OJ/5-2a", 0, 0, 1.83,"strange-comfort"]
+	]
+}

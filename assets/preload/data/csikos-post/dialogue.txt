@@ -1,0 +1,17 @@
+:any:Sir, the portal is working!!
+:playSound:custom/OJ
+:dad:And where it leads?
+:playSound:custom/beat
+:bf3:Nowhere yet, you haven't told me where do you want to go
+:playSound:custom/OJ
+:dad:Try with the location when you used this machine last time
+:playSound:tankmanAudios/ugh2
+:bf:Beep skedop bop meow
+:playSound:custom/OJ
+:dad:Still here? What do you want?
+:playSound:tankmanAudios/ugh2
+:bf:Beep
+:playSound:custom/OJ
+:dad:You won, right. But this hasn't ended yet, has it?
+:playSound:custom/OJ
+:dad:Let me use a clasical song, you need some culture soldier

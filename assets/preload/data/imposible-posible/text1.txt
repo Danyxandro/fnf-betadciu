@@ -1,0 +1,36 @@
+:playSound:tankmanAudios/ugh2
+:bf:Bep bap bopeebo beep?
+:playSound:custom/gfBeep
+:gf:Trust me, a refound for a cursed videogame worths it
+:playSound:tankmanAudios/ugh2
+:bf:Beep
+:playSound:custom/portal
+:skip/hide:
+:none/2:
+:gf2/1:BOYFRIEND HELP ME!!
+:bf:Beep...
+:pauseMusic/noSound:
+:none/2:
+:music:loop
+:playSound:custom/beat
+:dad/3:Heh, it worked
+:playSound:tankmanAudios/ugh2
+:bf:Beep??
+:playSound:custom/beat
+:dad:Oh, let me introduce myself
+:playSound:custom/beat
+:dad:My name is Beat Buster, I'm a sergal
+:playSound:tankmanAudios/ugh2
+:bf:Dai boop be?
+:playSound:custom/beat
+:dad:I didn't expect you knew what a sergal is
+:playSound:custom/beat
+:dad:However.. I managed to bring us here just to battle you
+:playSound:tankmanAudios/ugh2
+:bf:Beep boop bap
+:playSound:custom/beat
+:dad:I really want to do this
+:playSound:custom/beat
+:dad:Please, enjoy the show
+:playSound:tankmanAudios/ugh2
+:bf:skdop beep bap

@@ -1,0 +1,17 @@
+:playSound:tankmanAudios/ugh2
+:bf:beep bop dabibap
+:playSound:custom/beat
+:dad:Too easy, huh?
+:playSound:custom/beat
+:dad:I accept my defeat
+:playSound:custom/beat
+:dad:I lost, you win
+:playSound:custom/beat
+:dad/2:I made a promise, so... Come with me
+:playSound:tankmanAudios/ugh2
+:bf:beep
+:playSound:custom/beat
+:dad:It was a great show lil Boyfriend
+:playSound:custom/gfBeep
+:skip/hide:
+:gf/black:Just take us out of here blue furry

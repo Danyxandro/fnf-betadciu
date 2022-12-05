@@ -1,0 +1,23 @@
+:playSound:tankmanAudios/ugh2
+:bf:Beep!
+:playSound:custom/gfBeep
+:gf:Boyfriend! You're back
+:playSound:custom/beat
+:dad:Wow! You managed to escape!
+:playSound:custom/keen
+:extra:Speaking of... How did you come back?
+:playSound:tankmanAudios/ugh2
+:bf/2:Beep bop beep bop sked dop bap
+:dad/noSound:Ah... I see...
+:playSound:custom/gfBeep
+:gf:Okey, we are here. Can we leave now?
+:playSound:custom/beat
+:dad:Yeah, right now.
+:playSound:custom/keen
+:extra:Wait! Won't you say "farewell"?
+:playSound:custom/beat
+:dad:Can we have the pleasure to sing once more?
+:playSound:custom/keen
+:extra:Yeah, please!
+:playSound:tankmanAudios/ugh2
+:bf:Beep!

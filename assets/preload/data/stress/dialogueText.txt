@@ -1,0 +1,25 @@
+:playSound:tankmanAudios/stress1
+:dad:God effing dammit!
+:playSound:tankmanAudios/stress2
+:dad:Well played, you little shit!
+:playSound:tankmanAudios/stress3
+:dad:But this is WAR! And in war... people DIE!
+:playSound:tankmanAudios/stress4
+:dad:Men, get ready to fire!
+:playSound:tankmanAudios/stress5
+:dad:Sorry, no prom for you this year, ha ha ha!
+:gf:...
+:playSound:tankmanAudios/shooters
+:extra:*BANG*
+:playSound:tankmanAudios/stress6
+:dad:Ah, look who it is! Your sexually ambiguous, angry little friend!
+:playSound:tankmanAudios/stress7
+:dad:Don't you have a school to shoot up?
+:playSound:tankmanAudios/stress8
+:dad:There's one way to settle this
+:playSound:tankmanAudios/stress9
+:dad:Let's rock, ya little cunt!
+:noSound:
+:bf:(bruh)
+:playSound:tankmanAudios/stress10
+:dad:Ha ha ha ha! Ya little cunts!

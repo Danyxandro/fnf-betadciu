@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="floor.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Suelo instancia 10000" x="0" y="0" width="2560" height="514" pivotX="1372" pivotY="251"/>
+	<SubTexture name="Suelo instancia 10001" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10002" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10003" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10004" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10005" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10006" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10007" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10008" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10009" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10010" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10011" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10012" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10013" x="0" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10014" x="2560" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10015" x="5120" y="0" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10016" x="0" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10017" x="2560" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10018" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10019" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10020" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10021" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10022" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10023" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10024" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10025" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10026" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10027" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10028" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10029" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10030" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10031" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10032" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10033" x="5120" y="514" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10034" x="0" y="1028" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10035" x="2560" y="1028" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10036" x="5120" y="1028" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10037" x="0" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10038" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10039" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10040" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10041" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10042" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10043" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10044" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10045" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10046" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10047" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10048" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10049" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10050" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10051" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10052" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10053" x="2560" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10054" x="5120" y="1542" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10055" x="0" y="2056" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10056" x="2560" y="2056" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10057" x="5120" y="2056" width="2560" height="514"/>
+	<SubTexture name="Suelo instancia 10058" x="0" y="0" width="2560" height="514"/>
+</TextureAtlas>

@@ -1,0 +1,6 @@
+:playSound:custom/beat
+:dad:Okey, we're almost done
+:playSound:custom/beat
+:dad:Do you expect this to be difficult? Wish granted
+:playSound:tankmanAudios/ugh2
+:bf:Beep boop be be boop

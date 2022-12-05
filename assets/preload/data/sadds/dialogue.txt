@@ -1,0 +1,39 @@
+:playSound:custom/keen
+:extra0:Uh...
+:playSound:custom/gfBeep
+:gf:Uhh Keen?
+:playSound:custom/keen
+:extra0:A group of soldiers ambushed us
+:playSound:custom/keen
+:extra0:They don't let us reach the portal. I challenged their leader to a rap battle
+:playSound:custom/keen
+:extra0:But I... I've lost
+:playSound:tankmanAudios/ugh2
+:bf:Bep bop skedoobop meow
+:music:dont be daunted
+:none/1:
+:playSound:custom/OJ
+:dad:Oh? What do you want?
+:playSound:custom/OJ
+:dad:And what the fuck is that thing behind you??
+:playSound:custom/gfBeep
+:gf:Hey! Don't you know how to treat with a lady?
+:playSound:custom/OJ
+:dad:Yes, I do but I don't see the lady
+:playSound:tankmanAudios/ugh2
+:bf:Miau bop beep bop!!
+:playSound:custom/OJ
+:dad:You are intruders, leave now or perish!
+:playSound:tankmanAudios/ugh2
+:bf:Meow skedebop beep
+:playSound:custom/OJ
+:dad:Challenge accepted. Don't push buttons randomly, it will only hurt you
+:playSound:custom/OJ
+:dad:You're already warned
+:bf0/2:Hello! Just a quick tutorial
+:bf0:When you see only a strum and the orange effect...
+:bf0:Don't press keys when there isn't any note. It will damage you
+:bf0/3:Also, avoid black notes, they will damage you if you hit them
+:bf0:Hitting the red flame notes (you know which ones) will result into a gameover
+:bf0:I wish you best luck and i hope I can talk to you again
+:bf0:See ya!

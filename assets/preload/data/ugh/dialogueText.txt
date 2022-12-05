@@ -1,0 +1,8 @@
+:playSound:tankmanAudios/ugh1
+:dad:Well, well, well... Whadda we got here?
+:playSound:tankmanAudios/ugh2
+:bf:Beep
+:playSound:tankmanAudios/ugh3
+:dad:We should just kill you, but...
+:playSound:tankmanAudios/ugh4
+:dad:what the hell? It's been a boring day. Let's see what you got!

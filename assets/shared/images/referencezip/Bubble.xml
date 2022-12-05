@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Bubble.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bubble0000" x="0" y="0" width="238" height="121" frameX="-25" frameY="-137" frameWidth="1393" frameHeight="415"/>
+	<SubTexture name="Bubble0001" x="238" y="0" width="469" height="179" frameX="-20" frameY="-110" frameWidth="1393" frameHeight="415"/>
+	<SubTexture name="Bubble0002" x="707" y="0" width="700" height="238" frameX="-15" frameY="-83" frameWidth="1393" frameHeight="415"/>
+	<SubTexture name="Bubble0003" x="0" y="238" width="931" height="297" frameX="-10" frameY="-55" frameWidth="1393" frameHeight="415"/>
+	<SubTexture name="Bubble0004" x="0" y="535" width="1162" height="356" frameX="-5" frameY="-28" frameWidth="1393" frameHeight="415"/>
+	<SubTexture name="Bubble0005" x="0" y="891" width="1393" height="415"/>
+</TextureAtlas>

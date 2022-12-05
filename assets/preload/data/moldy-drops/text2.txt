@@ -1,0 +1,8 @@
+:playSound:custom/beat
+:dad:Sorry for making you wait
+:playSound:custom/beat
+:dad:But you have to sing all the three songs
+:playSound:custom/beat
+:dad:then I'll bring you back home
+:playSound:tankmanAudios/ugh2
+:bf:Bop be bap

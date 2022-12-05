@@ -1,0 +1,112 @@
+{
+"posicion":[450,450,"bf"],
+	"offsets": [
+		["idle", 0, 0],
+		["singUP", 0, 0],
+		["singRIGHT", 0, 0],
+		["singLEFT", 0, 0],
+		["singDOWN", 0, 0]
+	],
+	"offsets2": [
+		["idle", 0, 0],
+		["singUP", 0, 0],
+		["singRIGHT", 0, 0],
+		["singLEFT", 0, 0],
+		["singDOWN", 0, 0]
+	],
+	"coords1":[0,0],
+	"scale":0.8,
+	"pico": [
+		["idle", 0, 0],
+		["singUP", 0, 0],
+		["singRIGHT", 0, 0],
+		["singLEFT", 0, 0],
+		["singDOWN", 0, 0],
+		["singUP-alt", 0, 0],
+		["singRIGHT-alt", 0, 0],
+		["singLEFT-alt", 0, 0],
+		["singDOWN-alt", 0, 0],
+		["singUP-ugh", 0, 0],
+		["singRIGHT-oh", 0, 0],
+		["singLEFT-grr", 0, 0],
+		["singDOWN-huh", 0, 0]
+	],
+	"pico2": [
+		["idle", 0, 0],
+		["singUP", 0, 0],
+		["singRIGHT", 0, 0],
+		["singLEFT", 0, 0],
+		["singDOWN", 0, 0],
+		["singUP-alt", 0, 0],
+		["singRIGHT-alt", 0, 0],
+		["singLEFT-alt", 0, 0],
+		["singDOWN-alt", 0, 0],
+		["singUP-ugh", 0, 0],
+		["singRIGHT-oh", 0, 0],
+		["singLEFT-grr", 0, 0],
+		["singDOWN-huh", 0, 0]
+	],
+	"coordsP":[0,0],
+	"finger": [
+		["idle", 0, 0],
+		["singUP", 0, 0],
+		["singRIGHT", 0, 0],
+		["singLEFT", 0, 0],
+		["singDOWN", 0, 0]
+	],
+	"finger2": [
+		["idle", 0, 0],
+		["singUP", 0, 0],
+		["singRIGHT", 0, 0],
+		["singLEFT", 0, 0],
+		["singDOWN", 0, 0]
+	],
+	"coords2":[0,0],
+	"scale2":[0,0],
+	"notePos":[0,0],
+	"noteCrop":[22,30],
+	"portrait":[0,0],
+"credits":[
+["fore1",0,0],
+["fore2",0,0],
+["fore3",0,0],
+["fore4",0,0],
+["fore5",0,0],
+["fore6",0,0]
+],
+	"timeStops": [
+		[]
+	],
+	"menuPos": {
+		"label0": [ 10, 30 ],
+		"label0_1": [ 10, 15 ],
+		"note0": [ 30, 30 ],
+		"selector0": [ 50, 30 ],
+		"label1": [ 10, 50 ],
+		"label1_1": [ 10, 65 ],
+		"note1": [ 30, 50 ],
+		"selector1": [ 50, 50 ],
+		"label2": [ 10, 70 ],
+		"label2_1": [ 10, 85 ],
+		"note2": [ 30, 70 ],
+		"selector2": [ 50, 70 ],
+		"label3": [ 10, 90 ],
+		"label3_1": [ 10, 115 ],
+		"note3": [ 30, 90 ],
+		"selector3": [ 50, 90 ],
+		"label4": [ 10, 110 ],
+		"label4_1": [ 10, 125 ],
+		"note4": [ 30, 110 ],
+		"selector4": [ 50, 110 ],
+		"label5": [ 10, 130 ],
+		"label5_1": [ 10, 145 ],
+		"note5": [ 30, 130 ],
+		"selector5": [ 50, 130 ],
+		"label6": [ 10, 150 ],
+		"label6_1": [ 10, 165 ],
+		"note6": [ 30, 150 ],
+		"selector6": [ 50, 150 ]
+	},
+	"stepperSpace": 40,
+	"texto": "Shit Bad Good Sick Miss Miss(LN)"
+}

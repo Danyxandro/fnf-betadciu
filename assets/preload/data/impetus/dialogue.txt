@@ -1,0 +1,53 @@
+:playSound:tankmanAudios/ugh2
+:bf2:Bep bap meow miau...
+:playSound:custom/beat
+:bf3:What did he say?
+:playSound:custom/gfBeep
+:gf:He's hungry, me as well
+:playSound:custom/beat
+:bf3:But we are in a hurry!
+:playSound:custom/keen
+:extra:I have an idea!
+:playSound:custom/keen
+:extra:Boyfriend and the girl can look up for food
+:playSound:custom/keen
+:extra:The cheese and I will keep going and prepare the portal
+:playSound:tankmanAudios/ugh2
+:bf:Bep miau bop meow
+:playSound:custom/beat
+:bf3:Okey, see ya then!
+:music:reason it
+:none/1:
+:playSound:custom/beat
+:bf3:MERDE!!
+:playSound:custom/keen
+:extra:Hey! What's going on??
+:anything:Keep walking and don't make sudden moves
+:none/2:
+:playSound:custom/OJ
+:dad:Can I ask why are you here?
+:playSound:custom/beat
+:bf3:We are... hmm...
+:playSound:custom/keen
+:extra:Lost. We are lost
+:playSound:custom/OJ
+:dad:Then let one of my teamates escort you
+:playSound:custom/beat
+:bf3:{Great, now how we supposed to reach the portal?}
+:playSound:custom/keen
+:extra:I guess we have an option
+:music:your turn to go
+:playSound:custom/keen
+:extra0/3:I challenge you to a rap battle!!
+:playSound:custom/OJ
+:any:Excuse me?
+:playSound:custom/keen
+:extra0:If I win, you'll let us alone!
+:playSound:custom/OJ
+:any:Okey, but if you loose, the sergal will have to activate the portal
+:playSound:custom/beat
+:bf3:How did you...??
+:playSound:custom/OJ
+:any:One of my soldiers saw you here before using this device
+:playSound:custom/OJ
+:any:Then, give me your best, soldier. I can't wait to see the results!

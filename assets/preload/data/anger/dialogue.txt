@@ -1,0 +1,45 @@
+:playSound:custom/OJ
+:dad:God fucking damn it!!
+:playSound:tankmanAudios/ugh2
+:bf:Miau beep bop?
+:playSound:custom/beat
+:bf3:Even with a 200 years old song you beat him!
+:playSound:custom/OJ
+:dad:Fuck you!!
+:playSound:custom/OJ
+:dad2:Fuck you. Fuck your voice. Fuck that red hairy thing.
+:playSound:custom/gfBeep
+:gf:Here comes a crybaby
+:playSound:custom/OJ
+:dad:Yeah, yeah, very funny
+:music:reason it
+:playSound:custom/OJ2
+:dad2/1:BUT I HAVE WEAPONS HERE!!
+:playSound:tankmanAudios/ugh2
+:bf2:Beep!!
+:playSound:custom/bazooka
+:none/2:
+:playSound:custom/boom
+:none/3:
+:pauseMusic/noSound:
+:none/4:
+:music:containment
+:none/5:
+:playSound:custom/OJ
+:dad:What? Where are we?
+:playSound:tankmanAudios/ugh2
+:bf:Beep meow bop
+:playSound:custom/OJ
+:dad:I'm done with you...
+:playSound:custom/OJ
+:dad:It seems we are alone
+:playSound:tankmanAudios/ugh2
+:bf:Nya beep bap?
+:playSound:custom/OJ
+:dad:Well, nobody else is here...
+:playSound:custom/OJ2
+:dad2:NOW I WON'T HAVE MERCY ON YOU!!
+:playSound:custom/OJ2
+:dad2:NO ONE WILL SAVE YOU!!
+:playSound:custom/OJ
+:dad:Then... come here you little...

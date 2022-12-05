@@ -1,0 +1,32 @@
+:playSound:custom/beat
+:dad:Oh, it became late in two songs of two minutes again
+:playSound:tankmanAudios/ugh2
+:bf/2:Meow meow beep bop
+:playSound:custom/keen
+:extra:I think I got it
+:playSound:custom/keen
+:extra:This is funny, actually
+:playSound:custom/keen
+:extra:I would smile if I could
+:playSound:custom/keen
+:extra:I have a beak, as you can see
+:playSound:custom/beat
+:dad:Don't worry about that
+:none/1:
+:playSound:tankmanAudios/ugh2
+:bf2:Beep!
+:skip/none:
+:playSound:custom/keen
+:extra/hide:Don't worry, I can fly
+:playSound:custom/keen
+:extra:I am really excited, like if I could do anything!
+:playSound:custom/keen
+:extra:Thank you uh... what's your name?
+:playSound:tankmanAudios/ugh2
+:bf:Beep
+:playSound:custom/keen
+:extra:Okey, thank you very much Boyfriend for teaching me how to sing
+:playSound:custom/keen
+:extra:Would you like another song as a greeting?
+:playSound:tankmanAudios/ugh2
+:bf:Beep bap bop bop bap!

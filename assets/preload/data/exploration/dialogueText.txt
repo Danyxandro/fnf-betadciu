@@ -1,0 +1,12 @@
+:playSound:tankmanAudios/ugh2
+:bf:Beep bop meow beep bop bop bap
+:playSound:custom/keen
+:extra:What do you mean with "tired of note spam" songs?
+:playSound:tankmanAudios/ugh2
+:bf:Beep bop bop bap skdoo bep
+:playSound:custom/gfBeep
+:gf:I think we should hurry up before you get stuck like that hun
+:playSound:custom/keen
+:extra:Like if I would let you go
+:playSound:custom/keen
+:extra:Well, I'll try to put into practice what you said

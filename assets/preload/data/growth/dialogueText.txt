@@ -1,0 +1,40 @@
+:playSound:custom/gfBeep
+:gf2:BOYFRIEND!!
+:playSound:tankmanAudios/ugh2
+:bf:Meow beep
+:playSound:custom/beat
+:dad/1:Oh. It seems our stay here have changed your boyfriend
+:playSound:custom/gfBeep
+:gf:Is he going to stay like that!?
+:playSound:custom/beat
+:dad:I'm impressed you haven't changed yet
+:playSound:custom/beat
+:dad:However, I promised I would bring you back home
+:playSound:custom/beat
+:dad:And no one wanted to bring your speakers, so...
+:playSound:custom/beat
+:dad:We need to cross this canyon and...
+:playSound:custom/keen
+:extra/2:Stop right there!!
+:playSound:custom/beat
+:dad:Uh?
+:playSound:tankmanAudios/ugh2
+:bf:Meow?
+:playSound:custom/keen
+:extra:You blue-cheese. Last time I saw you, you opened a portal
+:playSound:custom/keen
+:extra:and I don't know what else
+:playSound:custom/keen
+:extra:I won't let you do that again!
+:playSound:tankmanAudios/ugh2
+:bf/3:Beep bop meow bop bap
+:playSound:custom/keen
+:extra:Well... I guess I can reach many tones with my voice
+:playSound:custom/keen
+:extra:Why do you ask?
+:playSound:tankmanAudios/ugh2
+:bf:Meow beep bap bop skebop            *wants to sing*
+:playSound:custom/beat
+:dad:He's really good. You should learn from him
+:playSound:custom/keen
+:extra:Fine... I'll rip you later, cheese

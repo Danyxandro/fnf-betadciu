@@ -1,0 +1,34 @@
+:playSound:custom/beat
+:dad:So... This is the end
+:playSound:custom/keen
+:extra:Shoot... I want to keep going...
+:playSound:custom/gfBeep
+:gf:We spent more time than we should
+:playSound:custom/gfBeep
+:gf:BF, come here before you turn into a furry again
+:playSound:tankmanAudios/ugh2
+:bf2:Beep...
+:none/1:
+:playSound:tankmanAudios/ugh2
+:bf:Beep!
+:playSound:custom/beat
+:dad:Bon voyage Boyfriend!!
+:playSound:custom/keen
+:extra0:Goodbye Boyfriend!!
+:pauseMusic:
+:playSound:custom/portal
+:none/2:
+:music:patience
+:playSound:tankmanAudios/ugh2
+:bf2/3:Beep!?
+:playSound:custom/keen
+:extra0:We are going with you!!
+:playSound:custom/keen
+:extra0:Maybe your world is interesting and with lots of people to sing with
+:playSound:custom/beat
+:sas:Perhaps we'll land in different places
+:playSound:custom/beat
+:sas:But we are going to meet again
+:playSound:custom/beat
+:skip/2:
+:dad/black:It is a promise...

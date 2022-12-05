@@ -1,0 +1,18 @@
+:playSound:tankmanAudios/ugh2
+:bf/hide:Beep bop miau bop bap
+:playSound:custom/keen
+:extra:I am glad you liked that song
+:playSound:custom/keen
+:extra:People does not always want a fight or say bad things about others
+:playSound:custom/keen
+:extra:you dissed me, but I am fine with it
+:playSound:custom/keen
+:extra:I am still happy to have sung with you
+:playSound:custom/beat
+:dad:Can we continue? I am who opened the portal to bring them here
+:playSound:custom/beat
+:dad:And I'll do it again to send them back where they belong
+:playSound:custom/gfBeep
+:gf/black:Let's hurry up, I don't want a cat as a boyfriend
+:playSound:tankmanAudios/ugh2
+:bf:Beep...

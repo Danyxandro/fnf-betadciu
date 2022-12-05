@@ -279,7 +279,7 @@ class PlayState extends MusicBeatState
 	private var barColors:Array<FlxColor> = [0xFFFF0000, 0xFF66FF33];
 	private var colorsMap:Map<String,FlxColor> = [];
 	private var musica:FlxSoundAsset;
-	public static var stateSwitch = {state:"freeplay",id:0};
+	public static var stateSwitch = {state:"freeplay",id:0}; //codigo importante aqui XDDDD
 
 	override public function create()
 	{

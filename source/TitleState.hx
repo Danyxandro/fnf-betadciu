@@ -187,7 +187,7 @@ class TitleState extends MusicBeatState
 		add(uno);
 
 		var datos = cast haxe.Json.parse( Assets.getText( Paths.json('offsets') ).trim() );
-		var pos = datos.posicion;
+		var pos:Array<Float> = datos.coords1;
 
 		screen.frames = Paths.getSparrowAtlas("screen");
 		screen.animation.addByPrefix('bump',"screen0",24,false);
@@ -218,10 +218,11 @@ class TitleState extends MusicBeatState
 			// logoBl.color = FlxColor.BLACK;
 		}*/
 
-		logoBl = new FlxSprite(20, 0);
+		logoBl = new FlxSprite(20, -5);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumping 1', 24);
+		logoBl.scale.set(0.95,0.95);
 		//logoBl.animation.addByIndices('bump', 'logo bumping 1', [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 1, 2, 3], "", false);
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();

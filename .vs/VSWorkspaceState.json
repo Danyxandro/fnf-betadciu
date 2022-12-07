@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
+    "\\assets\\preload",
+    "\\assets\\preload\\data",
     "\\source"
   ],
+  "SelectedNode": "\\assets\\preload\\data\\introText.txt",
   "PreviewInSolutionExplorer": false
 }

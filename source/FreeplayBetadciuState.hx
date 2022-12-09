@@ -62,7 +62,24 @@ class FreeplayBetadciuState extends MusicBeatState
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
-			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1],i));
+			var difficulties:Array<Bool> = [true,true,true];
+			if(data[3] != null){
+				difficulties = [];
+				var datos:Array<String> = data[3].split('|');
+				for(obj in datos){
+					switch(obj.toLowerCase()){
+						case "easy":
+							difficulties[0]=true;
+						case "hard":
+							difficulties[2]=true;
+						default:
+							difficulties[1]=true;
+					}
+				}
+				if(difficulties.length < 1)
+					difficulties[1]=true;
+			}
+			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1],i,difficulties));
 		}
 
 		/* 
@@ -355,6 +372,14 @@ class FreeplayBetadciuState extends MusicBeatState
 		if (curDifficulty > 2)
 			curDifficulty = 0;
 
+		var dif:Int = 0 + curDifficulty;
+		var aux:Array<Bool> = songs[curSelected].difficulties;
+		while(!aux[dif]){
+			dif++;
+			if (dif > 2)
+				dif = 0;
+		}
+
 		// adjusting the highscore song name to be compatible (changeDiff)
 		var songHighscore = StringTools.replace(songs[curSelected].songName, " ", "-");
 		switch (songHighscore) {
@@ -363,11 +388,11 @@ class FreeplayBetadciuState extends MusicBeatState
 		}
 		
 		#if !switch
-		intendedScore = Highscore.getScore(songHighscore, curDifficulty);
-		combo = Highscore.getCombo(songHighscore, curDifficulty);
+		intendedScore = Highscore.getScore(songHighscore, dif);
+		combo = Highscore.getCombo(songHighscore, dif);
 		#end
 
-		diffText.text = CoolUtil.difficultyFromInt(curDifficulty).toUpperCase();
+		diffText.text = CoolUtil.difficultyFromInt(dif).toUpperCase();
 	}
 
 	function changeSelection(change:Int = 0)
@@ -385,12 +410,13 @@ class FreeplayBetadciuState extends MusicBeatState
 			curSelected = songs.length - 1;
 		if (curSelected >= songs.length)
 			curSelected = 0;
+		changeDiff(0);
 
 		// selector.y = (70 * curSelected) + 30;
 		
 		// adjusting the highscore song name to be compatible (changeSelection)
 		// would read original scores if we didn't change packages
-		var songHighscore = StringTools.replace(songs[curSelected].songName, " ", "-");
+		/*var songHighscore = StringTools.replace(songs[curSelected].songName, " ", "-");
 		switch (songHighscore) {
 			case 'Dad-Battle': songHighscore = 'Dadbattle';
 			case 'Philly-Nice': songHighscore = 'Philly';
@@ -400,7 +426,7 @@ class FreeplayBetadciuState extends MusicBeatState
 		intendedScore = Highscore.getScore(songHighscore, curDifficulty);
 		combo = Highscore.getCombo(songHighscore, curDifficulty);
 		// lerpScore = 0;
-		#end
+		#end*/
 
 		#if PRELOAD_ALL
 		var archivo = Paths.inst(songs[curSelected].songName);

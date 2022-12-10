@@ -27,7 +27,7 @@ class FreeplayBetadciuState extends MusicBeatState
 	var songs:Array<SongMetadata> = [];
 
 	var selector:FlxText;
-	var curSelected:Int = 0;
+	var curSelected:Int;
 	public static var curDifficulty:Int = 1;
 
 	var scoreText:FlxText;
@@ -52,6 +52,7 @@ class FreeplayBetadciuState extends MusicBeatState
 	private var cachedSongsList:Array<SongMetadata> = [];
 	private var playMusic:Bool = true;
 	private var playingSong:String = "";
+	private var songDifficulty:Int = 1;
 
 	public static var position:Int = 0;
 
@@ -154,7 +155,7 @@ class FreeplayBetadciuState extends MusicBeatState
 		add(scoreText);
 		curSelected = position;
 		changeSelection();
-		changeDiff();
+		//changeDiff();
 
 		// FlxG.sound.playMusic(Paths.music('title'), 0);
 		// FlxG.sound.music.fadeIn(2, 0, 0.8);
@@ -365,19 +366,19 @@ class FreeplayBetadciuState extends MusicBeatState
 
 	function changeDiff(change:Int = 0)
 	{
-		curDifficulty += change;
+		songDifficulty += change;
 
-		if (curDifficulty < 0)
-			curDifficulty = 2;
-		if (curDifficulty > 2)
-			curDifficulty = 0;
+		if (songDifficulty < 0)
+			songDifficulty = 2;
+		if (songDifficulty > 2)
+			songDifficulty = 0;
 
-		var dif:Int = 0 + curDifficulty;
+		curDifficulty = 0 + songDifficulty;
 		var aux:Array<Bool> = songs[curSelected].difficulties;
-		while(!aux[dif]){
-			dif++;
-			if (dif > 2)
-				dif = 0;
+		while(!aux[curDifficulty]){
+			curDifficulty++;
+			if (curDifficulty > 2)
+				curDifficulty = 0;
 		}
 
 		// adjusting the highscore song name to be compatible (changeDiff)
@@ -388,11 +389,11 @@ class FreeplayBetadciuState extends MusicBeatState
 		}
 		
 		#if !switch
-		intendedScore = Highscore.getScore(songHighscore, dif);
-		combo = Highscore.getCombo(songHighscore, dif);
+		intendedScore = Highscore.getScore(songHighscore, curDifficulty);
+		combo = Highscore.getCombo(songHighscore, curDifficulty);
 		#end
 
-		diffText.text = CoolUtil.difficultyFromInt(dif).toUpperCase();
+		diffText.text = CoolUtil.difficultyFromInt(curDifficulty).toUpperCase();
 	}
 
 	function changeSelection(change:Int = 0)

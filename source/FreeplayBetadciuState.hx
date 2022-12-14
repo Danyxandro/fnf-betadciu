@@ -52,7 +52,6 @@ class FreeplayBetadciuState extends MusicBeatState
 	private var cachedSongsList:Array<SongMetadata> = [];
 	private var playMusic:Bool = true;
 	private var playingSong:String = "";
-	private var songDifficulty:Int = 1;
 
 	public static var position:Int = 0;
 
@@ -64,8 +63,9 @@ class FreeplayBetadciuState extends MusicBeatState
 		{
 			var data:Array<String> = initSonglist[i].split(':');
 			var difficulties:Array<Bool> = [true,true,true];
+			var msg:String = "";
 			if(data[3] != null){
-				difficulties = [];
+				difficulties = [false,false,false];
 				var datos:Array<String> = data[3].split('|');
 				for(obj in datos){
 					switch(obj.toLowerCase()){
@@ -73,14 +73,18 @@ class FreeplayBetadciuState extends MusicBeatState
 							difficulties[0]=true;
 						case "hard":
 							difficulties[2]=true;
+						case "warning":
+							msg = "warning";
 						default:
 							difficulties[1]=true;
 					}
 				}
-				if(difficulties.length < 1)
-					difficulties[1]=true;
+				if(!difficulties.contains(true))
+					difficulties = [true,true,true];
 			}
-			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1],i,difficulties));
+			if(data[4] != null)
+				msg = data[4];
+			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1],i,difficulties,msg));
 		}
 
 		/* 
@@ -323,6 +327,7 @@ class FreeplayBetadciuState extends MusicBeatState
 		if (controls.BACK && !searchExtended)
 		{
 			FlxG.mouse.visible = false;
+			position = 0;
 			FlxG.switchState(new MainMenuState());
 		}
 
@@ -347,8 +352,13 @@ class FreeplayBetadciuState extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = songs[curSelected].week;
+			if(songs[curSelected].message == "warning"){
+				openSubState(new WarningSubstate());
+			}else{
 			trace('CUR WEEK' + PlayState.storyWeek);
+			PlayState.stateSwitch.allowChanging = true;
 			LoadingState.loadAndSwitchState(new PlayState());
+			}
 		}
 
 		if (FlxG.mouse.justPressed)
@@ -366,17 +376,19 @@ class FreeplayBetadciuState extends MusicBeatState
 
 	function changeDiff(change:Int = 0)
 	{
-		songDifficulty += change;
-
-		if (songDifficulty < 0)
-			songDifficulty = 2;
-		if (songDifficulty > 2)
-			songDifficulty = 0;
-
-		curDifficulty = 0 + songDifficulty;
+		curDifficulty += change;
+		var increment:Int = 1;
+		if (curDifficulty < 0)
+			curDifficulty = 2;
+		if (curDifficulty > 2)
+			curDifficulty = 0;
+		if(change < 0)
+			increment = -1;
 		var aux:Array<Bool> = songs[curSelected].difficulties;
 		while(!aux[curDifficulty]){
-			curDifficulty++;
+			curDifficulty += increment;
+			if (curDifficulty < 0)
+				curDifficulty = 2;
 			if (curDifficulty > 2)
 				curDifficulty = 0;
 		}

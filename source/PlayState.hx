@@ -279,7 +279,7 @@ class PlayState extends MusicBeatState
 	private var barColors:Array<FlxColor> = [0xFFFF0000, 0xFF66FF33];
 	private var colorsMap:Map<String,FlxColor> = [];
 	private var musica:FlxSoundAsset;
-	public static var stateSwitch = {state:"freeplay",id:0}; //codigo importante aqui XDDDD
+	public static var stateSwitch = {state:"freeplay",id:0,allowChanging:true}; //codigo importante aqui XDDDD
 
 	override public function create()
 	{
@@ -311,6 +311,10 @@ class PlayState extends MusicBeatState
 		PlayStateChangeables.Optimize = FlxG.save.data.optimize;
 		PlayStateChangeables.singCam = FlxG.save.data.singCam;
 		ghostTapping = FlxG.save.data.ghost;
+		if(stateSwitch.allowChanging)
+			PlayStateChangeables.allowCharChange = FlxG.save.data.enableCharchange;
+		else
+			PlayStateChangeables.allowCharChange = false;
 
 		// pre lowercasing the song name (create)
 		var songLowercase = StringTools.replace(PlayState.SONG.song, " ", "-").toLowerCase();

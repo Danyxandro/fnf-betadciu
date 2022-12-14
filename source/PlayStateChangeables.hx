@@ -6,4 +6,5 @@ class PlayStateChangeables
     public static var botPlay:Bool;
     public static var Optimize:Bool;
     public static var singCam:Bool;
+    public static var allowCharChange:Bool;
 }

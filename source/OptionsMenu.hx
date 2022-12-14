@@ -64,6 +64,7 @@ class OptionsMenu extends MusicBeatState
 			new SavePlays("Saves a replay to watch later."),
 			new Optimization("No backgrounds, no characters, centered notes, no player 2."),
 			new SingCamOption("Camera moves while pressing an arrow"),
+			new AllowCharChange("Eanble/disable changing characters for better performance"),
 			new CachingOption("Preload songs and characters before starting the game."),
 			new OldVoiceOption("Play with Beat's old voice"),
 			new BotPlay("Showcase your charts and mods with autoplay.")

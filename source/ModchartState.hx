@@ -34,6 +34,7 @@ class ModchartState
 	private var curBF = 0;
 	private var curGF = 0;
 	private var flags:Array<Bool> = [false,false];
+	private var allowChanging:Bool = true;
 	//private var characters:Map<String,Character> = [PlayState.SONG.player2 => new Character(100, 100, PlayState.SONG.player2)];
 	//private var bfs:Map<String,Boyfriend> = [PlayState.SONG.player1 => new Boyfriend(770, 450, PlayState.SONG.player1)];
 
@@ -274,6 +275,12 @@ class ModchartState
 							changeIcon(id,false, PlayState.instance.layerChars.members[ids[id]].isCustom);
 						}
 					}
+					if(!allowChanging){
+						if(PlayState.instance.animatedIcons["default2"].animation.getByName(id) != null){
+							changeIcon(id,false);
+						}else
+							changeIcon(id,false,true);
+					}
 					PlayState.instance.setColorBar(false,id);
 					if(noteStyle != null){
 						PlayState.instance.changeStyle(noteStyle,2);
@@ -306,6 +313,12 @@ class ModchartState
 							PlayState.boyfriend = PlayState.instance.layerBFs.members[idsBF[id]];
 							changeIcon(id,true, PlayState.instance.layerBFs.members[idsBF[id]].isCustom);
 						}
+					}
+					if(!allowChanging){
+						if(PlayState.instance.animatedIcons["default1"].animation.getByName(id) != null){
+							changeIcon(id,true);
+						}else
+							changeIcon(id,true,true);
 					}
 					PlayState.instance.setColorBar(true,id);
 					if(noteStyle != null){
@@ -572,6 +585,7 @@ class ModchartState
 				setVar("dadFadeAlpha", 0.001);
 				setVar("bfFadeAlpha", 0.001);
 				setVar("gfFadeAlpha", 0.001);
+				allowChanging = PlayStateChangeables.allowCharChange;
 				flags[0] = PlayState.instance.iconP1.isCustom;
 				flags[1] = PlayState.instance.iconP2.isCustom;
 								
@@ -719,6 +733,7 @@ class ModchartState
 				});
 
 				Lua_helper.add_callback(lua, "loadCharacter", function(character:String,x:Float,y:Float,?isPlayer:Bool = false,?sync:Bool = false){
+					if(allowChanging){
 					if(isPlayer){
 						var bf:Boyfriend = new Boyfriend(x,y,character,sync);
 						//bfs[character] = bf;
@@ -758,17 +773,38 @@ class ModchartState
 						else
 							luaSprites.set(character, PlayState.instance.layerChars.members[ids[character]]);
 					}
+					}//Fin del if allowChanging
+					else{
+						if(isPlayer){
+							if(PlayState.instance.animatedIcons["default1"].animation.getByName(character) == null){
+								PlayState.instance.animatedIcons[character] = new HealthIcon(character,true);
+								PlayState.instance.animatedIcons[character].y = PlayState.instance.iconP1.y;
+								PlayState.instance.animatedIcons[character].alpha = 0.001;
+								PlayState.instance.layerIcons.add(PlayState.instance.animatedIcons[character]);
+							}
+						}else{
+							if(PlayState.instance.animatedIcons["default2"].animation.getByName(character) == null){
+								PlayState.instance.animatedIcons[character + "2"] = new HealthIcon(character,false);
+								PlayState.instance.animatedIcons[character + "2"].y = PlayState.instance.iconP2.y;
+								PlayState.instance.animatedIcons[character + "2"].alpha = 0.001;
+								//PlayState.instance.animatedIcons[character + "2"].cameras = [PlayState.instance.camHUD];
+								PlayState.instance.layerIcons.add(PlayState.instance.animatedIcons[character + "2"]);
+							}
+						}
+					}
 					return character;
 				});
 
 				Lua_helper.add_callback(lua, "loadGirlfriend", function(personaje:String, x:Float, y:Float){
-					var char = new Character(x,y,personaje);
-					char.active = false;
-					char.alpha = getVar("gfFadeAlpha","float");
-					char.scrollFactor.set(0.95, 0.95);
-					PlayState.instance.layerGF.add(char);
-					gfs[personaje] = PlayState.instance.layerGF.members.length-1;
-					luaSprites.set(personaje, PlayState.instance.layerGF.members[gfs[personaje]]);
+					if(allowChanging){
+						var char = new Character(x,y,personaje);
+						char.active = false;
+						char.alpha = getVar("gfFadeAlpha","float");
+						char.scrollFactor.set(0.95, 0.95);
+						PlayState.instance.layerGF.add(char);
+						gfs[personaje] = PlayState.instance.layerGF.members.length-1;
+						luaSprites.set(personaje, PlayState.instance.layerGF.members[gfs[personaje]]);
+					}
 					return personaje;
 				});
 
@@ -782,6 +818,12 @@ class ModchartState
 						curChar = ids[id];
 						PlayState.instance.dadID = ids[id];
 						changeIcon(id,false,PlayState.instance.layerChars.members[ids[id]].isCustom);
+					}
+					if(!allowChanging){
+						if(PlayState.instance.animatedIcons["default2"].animation.getByName(id) != null)
+							changeIcon(id,false);
+						else
+							changeIcon(id,false,true);
 					}
 					if(noteStyle != null){
 						PlayState.instance.changeStyle(noteStyle,2);
@@ -798,6 +840,12 @@ class ModchartState
 						curBF = idsBF[id];
 						PlayState.instance.bfID = idsBF[id];
 						changeIcon(id,true,PlayState.instance.layerBFs.members[idsBF[id]].isCustom);
+					}
+					if(!allowChanging){
+						if(PlayState.instance.animatedIcons["default1"].animation.getByName(id) != null)
+							changeIcon(id,true);
+						else
+							changeIcon(id,true,true);
 					}
 					if(noteStyle != null){
 						PlayState.instance.changeStyle(noteStyle,1);
@@ -830,6 +878,10 @@ class ModchartState
 							}
 						}
 					}
+				});
+
+				Lua_helper.add_callback(lua, "allowCharacterChanging", function():Bool{
+					return allowChanging;
 				});
 
 				Lua_helper.add_callback(lua, "syncChar", function(id:String,synchronous:Bool,isPlayer:Bool){

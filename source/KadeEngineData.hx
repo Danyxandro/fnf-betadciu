@@ -115,6 +115,9 @@ class KadeEngineData
 		if(FlxG.save.data.weekUnlocked == null)
 			FlxG.save.data.weekUnlocked = [true, true, true, true, true, true, true, true, true, false, false];
 
+		if(FlxG.save.data.enableCharchange == null)
+			FlxG.save.data.enableCharchange = true;
+
 		if(FlxG.save.data.healthValues == null){
 			var map:Map<String,Dynamic> = [
 				"0" => new Map<String,Dynamic>(),
@@ -143,7 +146,7 @@ class KadeEngineData
 			map["2"].set("Normal",["shit"=>0,"bad"=>0,"good"=>-0.075,"sick"=>-0.075,"miss"=>0,"missLN"=>0]);
 			map["2"].set("Easy",["shit"=>0,"bad"=>0,"good"=>-0.05,"sick"=>-0.05,"miss"=>0,"missLN"=>0]);
 			map["2"].set("score",["shitScore"=>0,"badScore"=>0,"goodScore"=>-300,"sickScore"=>-300,"missScore"=>0,"missLNScore"=>0]);
-			map["1"].set("damage",true);
+			map["2"].set("damage",true);
 
 			map["3"].set("Hard",["shit"=>0,"bad"=>0,"good"=>-0.2,"sick"=>-0.2,"miss"=>0,"missLN"=>0]);
 			map["3"].set("Normal",["shit"=>0,"bad"=>0,"good"=>-0.15,"sick"=>-0.15,"miss"=>0,"missLN"=>0]);

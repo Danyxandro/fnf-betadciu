@@ -51,7 +51,6 @@ class FreeplayState extends MusicBeatState
 	private var cachedSongsList:Array<SongMetadata> = [];
 	private var playMusic:Bool = true;
 	private var playingSong:String = "";
-	private var songDifficulty:Int = 1;
 
 	public static var position:Int = 0;
 
@@ -63,8 +62,9 @@ class FreeplayState extends MusicBeatState
 		{
 			var data:Array<String> = initSonglist[i].split(':');
 			var difficulties:Array<Bool> = [true,true,true];
+			var msg:String = "";
 			if(data[3] != null){
-				difficulties = [];
+				difficulties = [false,false,false];
 				var datos:Array<String> = data[3].split('|');
 				for(obj in datos){
 					switch(obj.toLowerCase()){
@@ -72,13 +72,17 @@ class FreeplayState extends MusicBeatState
 							difficulties[0]=true;
 						case "hard":
 							difficulties[2]=true;
+						case "warning":
+							msg = "warning";
 						default:
 							difficulties[1]=true;
 					}
 				}
-				if(difficulties.length < 1)
-					difficulties[1]=true;
+				if(!difficulties.contains(true))
+					difficulties = [true,true,true];
 			}
+			if(data[4] != null)
+				msg = data[4];
 			var insert:Bool = true;
 			switch(data[0].toLowerCase()){
 				case 'synth-wars':
@@ -92,7 +96,7 @@ class FreeplayState extends MusicBeatState
 						insert = false;
 			}
 			if(insert){
-				songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1], j, difficulties));
+				songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1], j, difficulties, msg));
 				j++;}
 		}
 
@@ -336,6 +340,7 @@ class FreeplayState extends MusicBeatState
 		if (controls.BACK && !searchExtended)
 		{
 			FlxG.mouse.visible = false;
+			position = 0;
 			FlxG.switchState(new MainMenuState());
 		}
 
@@ -360,8 +365,13 @@ class FreeplayState extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = songs[curSelected].week;
+			if(songs[curSelected].message == "warning"){
+				openSubState(new WarningSubstate());
+			}else{
 			trace('CUR WEEK' + PlayState.storyWeek);
+			PlayState.stateSwitch.allowChanging = true;
 			LoadingState.loadAndSwitchState(new PlayState());
+			}
 		}
 
 		if (FlxG.mouse.justPressed)
@@ -379,17 +389,19 @@ class FreeplayState extends MusicBeatState
 
 	function changeDiff(change:Int = 0)
 	{
-		songDifficulty += change;
-
-		if (songDifficulty < 0)
-			songDifficulty = 2;
-		if (songDifficulty > 2)
-			songDifficulty = 0;
-
-		curDifficulty = 0 + songDifficulty;
+		curDifficulty += change;
+		var increment:Int = 1;
+		if (curDifficulty < 0)
+			curDifficulty = 2;
+		if (curDifficulty > 2)
+			curDifficulty = 0;
+		if(change < 0)
+			increment = -1;
 		var aux:Array<Bool> = songs[curSelected].difficulties;
 		while(!aux[curDifficulty]){
-			curDifficulty++;
+			curDifficulty += increment;
+			if (curDifficulty < 0)
+				curDifficulty = 2;
 			if (curDifficulty > 2)
 				curDifficulty = 0;
 		}
@@ -633,8 +645,9 @@ class SongMetadata
 	public var songCharacter:String = "";
 	public var listPos:Int = 0;
 	public var difficulties:Array<Bool>;
+	public var message:String = "";
 
-	public function new(song:String, week:Int, songCharacter:String, ?listPos:Int = 0, ?difficulties:Array<Bool>)
+	public function new(song:String, week:Int, songCharacter:String, ?listPos:Int = 0, ?difficulties:Array<Bool>, ?message:String)
 	{
 		this.songName = song;
 		this.week = week;
@@ -644,5 +657,6 @@ class SongMetadata
 			this.difficulties = difficulties;
 		else
 			this.difficulties=[true,true,true];
+		this.message = message;
 	}
 }

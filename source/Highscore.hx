@@ -17,13 +17,13 @@ class Highscore
 	public static function saveScore(song:String, score:Int = 0, ?diff:Int = 0):Void
 	{
 		var daSong:String = formatSong(song, diff);
-
+		trace("Saved " + daSong + " score: " + score);
 
 		#if !switch
 		NGio.postScore(score, song);
 		#end
 
-		if(!FlxG.save.data.botplay)
+		if(!PlayState.stateSwitch.usedBotplay)
 		{
 			if (songScores.exists(daSong))
 			{
@@ -40,7 +40,7 @@ class Highscore
 		var daSong:String = formatSong(song, diff);
 		var finalCombo:String = combo.split(')')[0].replace('(', '');
 
-		if(!FlxG.save.data.botplay)
+		if(!PlayState.stateSwitch.usedBotplay)
 		{
 			if (songCombos.exists(daSong))
 			{
@@ -59,7 +59,7 @@ class Highscore
 		NGio.postScore(score, "Week " + week);
 		#end
 
-		if(!FlxG.save.data.botplay)
+		if(PlayState.stateSwitch.usedBotplay)
 		{
 			var daWeek:String = formatSong('week' + week, diff);
 
@@ -94,7 +94,7 @@ class Highscore
 
 	public static function formatSong(song:String, diff:Int):String
 	{
-		var daSong:String = song;
+		var daSong:String = song.toLowerCase();
 
 		if (diff == 0)
 			daSong += '-easy';

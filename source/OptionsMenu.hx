@@ -60,11 +60,11 @@ class OptionsMenu extends MusicBeatState
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			new WatermarkOption("Enable and disable all watermarks from the engine."),
 			new ScoreScreen("Show the score screen after the end of a song"),
-			//new ShowInput("Display every single input in the score screen."),
+			new ShowInput("Display every single input in the score screen."),
 			new SavePlays("Saves a replay to watch later."),
 			new Optimization("No backgrounds, no characters, centered notes, no player 2."),
 			new SingCamOption("Camera moves while pressing an arrow"),
-			new AllowCharChange("Eanble/disable changing characters for better performance"),
+			new AllowCharChange("Enable/disable changing characters for better performance"),
 			new CachingOption("Preload songs and characters before starting the game."),
 			new OldVoiceOption("Play with Beat's old voice"),
 			new BotPlay("Showcase your charts and mods with autoplay.")

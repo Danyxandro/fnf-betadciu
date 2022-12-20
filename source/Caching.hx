@@ -34,7 +34,7 @@ class Caching extends MusicBeatState
 
         FlxG.worldBounds.set(0,0);
 
-        FlxG.save.bind('funkin', 'ninjamuffin99');
+        FlxG.save.bind('funkin', 'danyxandro');
 
         trace("Caching: " + FlxG.save.data.caching);
 

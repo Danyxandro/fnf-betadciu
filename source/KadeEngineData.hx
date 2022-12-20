@@ -89,7 +89,7 @@ class KadeEngineData
 			FlxG.save.data.scoreScreen = true;
 
 		if (FlxG.save.data.inputShow == null)
-			FlxG.save.data.inputShow = false;
+			FlxG.save.data.inputShow = true;
 
 		if (FlxG.save.data.optimize == null)
 			FlxG.save.data.optimize = false;

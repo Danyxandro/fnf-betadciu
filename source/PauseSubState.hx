@@ -280,6 +280,7 @@ class PauseSubState extends MusicBeatSubstate
 						PlayState.instance.setHealthValues(-2);
 					}else{
 						PlayStateChangeables.botPlay = true;
+						PlayState.stateSwitch.usedBotplay = true;
 						texto = "Disable botplay";
 						PlayState.instance.botPlayState.alpha = 1;
 						if(botFlag)

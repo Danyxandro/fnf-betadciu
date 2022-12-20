@@ -813,9 +813,12 @@ class ModchartState
 						/*PlayState.instance.layerChars.members[ids[id]].visible = true;
 						PlayState.instance.layerChars.members[curChar].visible = !swap;*/
 						PlayState.instance.layerChars.members[ids[id]].alpha = 1;
-						if(swap)
+						if(swap){
 							PlayState.instance.layerChars.members[curChar].alpha = getVar("dadFadeAlpha","float");
+							PlayState.instance.layerChars.members[curChar].active = false;
+						}
 						curChar = ids[id];
+						PlayState.instance.layerChars.members[ids[id]].active = true;
 						PlayState.instance.dadID = ids[id];
 						changeIcon(id,false,PlayState.instance.layerChars.members[ids[id]].isCustom);
 					}
@@ -825,6 +828,7 @@ class ModchartState
 						else
 							changeIcon(id,false,true);
 					}
+					PlayState.instance.setColorBar(false,id);
 					if(noteStyle != null){
 						PlayState.instance.changeStyle(noteStyle,2);
 					}
@@ -834,9 +838,12 @@ class ModchartState
 					if(idsBF[id] != null){
 						/*PlayState.instance.layerBFs.members[curBF].visible = !swap;
 						PlayState.instance.layerBFs.members[idsBF[id]].visible = true;*/
-						if(swap)
+						if(swap){
 							PlayState.instance.layerBFs.members[curBF].alpha = getVar("bfFadeAlpha","float");
+							PlayState.instance.layerBFs.members[curBF].active = false;
+						}
 						PlayState.instance.layerBFs.members[idsBF[id]].alpha = 1;
+						PlayState.instance.layerBFs.members[idsBF[id]].active = true;
 						curBF = idsBF[id];
 						PlayState.instance.bfID = idsBF[id];
 						changeIcon(id,true,PlayState.instance.layerBFs.members[idsBF[id]].isCustom);
@@ -847,6 +854,7 @@ class ModchartState
 						else
 							changeIcon(id,true,true);
 					}
+					PlayState.instance.setColorBar(true,id);
 					if(noteStyle != null){
 						PlayState.instance.changeStyle(noteStyle,1);
 					}
@@ -880,7 +888,9 @@ class ModchartState
 					}
 				});
 
-				Lua_helper.add_callback(lua, "allowCharacterChanging", function():Bool{
+				Lua_helper.add_callback(lua, "allowCharacterChanging", function(?setting:Bool):Bool{
+					if(setting != null)
+						allowChanging = PlayStateChangeables.allowCharChange = setting;
 					return allowChanging;
 				});
 
@@ -908,6 +918,9 @@ class ModchartState
 				});
 
 				Lua_helper.add_callback(lua, "setHealthValue", function (property:String,value:Float,?noteType:Int=0,?setDamage) {
+					if(PlayStateChangeables.botPlay && value < 0){
+						value = value * -1;
+					}
 					if(PlayState.instance.healthValues.exists(""+noteType)){
 						switch(property){
 							case "shit":

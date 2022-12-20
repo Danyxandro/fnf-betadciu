@@ -279,7 +279,7 @@ class PlayState extends MusicBeatState
 	private var barColors:Array<FlxColor> = [0xFFFF0000, 0xFF66FF33];
 	private var colorsMap:Map<String,FlxColor> = [];
 	private var musica:FlxSoundAsset;
-	public static var stateSwitch = {state:"freeplay",id:0,allowChanging:true}; //codigo importante aqui XDDDD
+	public static var stateSwitch = {state:"freeplay",id:0,allowChanging:true,usedBotplay:false}; //codigo importante aqui XDDDD
 
 	override public function create()
 	{
@@ -308,6 +308,7 @@ class PlayState extends MusicBeatState
 		PlayStateChangeables.safeFrames = FlxG.save.data.frames;
 		PlayStateChangeables.scrollSpeed = FlxG.save.data.scrollSpeed;
 		PlayStateChangeables.botPlay = FlxG.save.data.botplay;
+		stateSwitch.usedBotplay = FlxG.save.data.botplay;
 		PlayStateChangeables.Optimize = FlxG.save.data.optimize;
 		PlayStateChangeables.singCam = FlxG.save.data.singCam;
 		ghostTapping = FlxG.save.data.ghost;
@@ -1778,6 +1779,7 @@ class PlayState extends MusicBeatState
 			PlayStateChangeables.useDownscroll = rep.replay.isDownscroll;
 			PlayStateChangeables.safeFrames = rep.replay.sf;
 			PlayStateChangeables.botPlay = true;
+			stateSwitch.usedBotplay = true;
 		}
 
 		trace('uh ' + PlayStateChangeables.safeFrames);
@@ -4280,7 +4282,7 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		FlxG.sound.music.pause();
 		vocals.pause();
-		if (SONG.validScore)
+		//if (SONG.validScore)
 		{
 			// adjusting the highscore song name to be compatible
 			// would read original scores if we didn't change packages

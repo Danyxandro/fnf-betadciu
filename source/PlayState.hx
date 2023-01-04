@@ -1975,7 +1975,7 @@ class PlayState extends MusicBeatState
 					icon.y = iconP2.y;
 				}
 				icon.alpha = 0.001;
-				animatedIcons["daidem" + i] = icon;
+				animatedIcons[icono + "" + i] = icon;
 				layerIcons.add(animatedIcons[icono + "" + i]);
 				//icon.cameras = [camHUD];
 			}
@@ -3865,11 +3865,22 @@ class PlayState extends MusicBeatState
 											daNote.clipRect = swagRect;
 										}
 									}else {
+										if(!daNote.mustPress){
 										var swagRect = new FlxRect(0, 0, daNote.frameWidth * 2, daNote.frameHeight * 2);
 										swagRect.height = (strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].y + Note.swagWidth / 2 - daNote.y) / daNote.scale.y;
 										swagRect.y = daNote.frameHeight - swagRect.height;
 	
 										daNote.clipRect = swagRect;
+
+										}else{
+											if(!healthValues.get(""+daNote.specialType).get("damage")){
+											var swagRect = new FlxRect(0, 0, daNote.frameWidth * 2, daNote.frameHeight * 2);
+											swagRect.height = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y + Note.swagWidth / 2 - daNote.y) / daNote.scale.y;
+											swagRect.y = daNote.frameHeight - swagRect.height;
+	
+											daNote.clipRect = swagRect;
+											}
+										}
 									}
 								}
 							}else
@@ -3911,11 +3922,21 @@ class PlayState extends MusicBeatState
 											daNote.clipRect = swagRect;
 										}
 									}else {
+										if(!daNote.mustPress){
 										var swagRect = new FlxRect(0, 0, daNote.width / daNote.scale.x, daNote.height / daNote.scale.y);
 										swagRect.y = (strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].y + Note.swagWidth / 2 - daNote.y) / daNote.scale.y;
 										swagRect.height -= swagRect.y;
 	
 										daNote.clipRect = swagRect;
+										}else{
+											if(!healthValues.get(""+daNote.specialType).get("damage")){
+											var swagRect = new FlxRect(0, 0, daNote.width / daNote.scale.x, daNote.height / daNote.scale.y);
+											swagRect.y = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y + Note.swagWidth / 2 - daNote.y) / daNote.scale.y;
+											swagRect.height -= swagRect.y;
+	
+											daNote.clipRect = swagRect;
+											}
+										}
 									}
 								}
 							}
@@ -4251,7 +4272,7 @@ class PlayState extends MusicBeatState
 		if (isStoryMode)
 			campaignMisses = misses;
 
-		if (!loadRep && FlxG.save.data.savePlay)
+		if (!loadRep)
 			//rep.SaveReplay(saveNotes);
 			rep.SaveReplay(saveNotes, saveJudge, replayAna);
 		else
@@ -4937,15 +4958,15 @@ class PlayState extends MusicBeatState
 								trace(n);
 								if(n != null)
 								{
-									switch(daNote.specialType){
-									case 0|4|5|6:
+									if(!healthValues.get(""+daNote.specialType).get("damage")){
+									//case 0|4|5|6:
 										goodNoteHit(daNote);
 										boyfriend.holdTimer = daNote.sustainLength;
 									}
 								}
 							}else {
-								switch(daNote.specialType){
-								case 0|4|5|6:
+								if(!healthValues.get(""+daNote.specialType).get("damage")){
+								//case 0|4|5|6:
 									goodNoteHit(daNote);
 									boyfriend.holdTimer = daNote.sustainLength;
 								}
@@ -4953,8 +4974,8 @@ class PlayState extends MusicBeatState
 							
 							if (FlxG.save.data.cpuStrums){
 								//trace('Note: ' + daNote.noteData + " type: " + daNote.specialType);
-								switch(daNote.specialType){
-									case 0|4|5|6:
+								if(!healthValues.get(""+daNote.specialType).get("damage")){
+									//case 0|4|5|6:
 									playerStrums.members[daNote.noteData].animation.play('confirm', true);
 									if (playerStrums.members[daNote.noteData].animation.curAnim.name == 'confirm' && SONG.noteStyle != 'pixel') //&& !curStage.startsWith('school'))
 									{
@@ -5333,7 +5354,7 @@ class PlayState extends MusicBeatState
 					if (!note.isSustainNote)
 					{
 						popUpScore(note);
-						if(note.specialType == 0)
+						if(!healthValues.get(""+note.specialType).get("damage"))
 							combo += 1;
 					}
 					else

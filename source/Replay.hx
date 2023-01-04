@@ -104,12 +104,23 @@ class Replay
 		var time = Date.now().getTime();
 
 		#if sys
+		if(FlxG.save.data.savePlay){
 		File.saveContent("assets/replays/replay-" + PlayState.SONG.song + "-time" + time + ".kadeReplay", data);
 
 		path = "replay-" + PlayState.SONG.song + "-time" + time + ".kadeReplay"; // for score screen shit
 
 		LoadFromJSON();
-
+		}else{
+			replay.songName = PlayState.SONG.song; 
+			replay.songDiff = PlayState.storyDifficulty;
+			replay.noteSpeed = (FlxG.save.data.scrollSpeed > 1 ? FlxG.save.data.scrollSpeed : PlayState.SONG.speed);
+			replay.isDownscroll = FlxG.save.data.downscroll;
+			replay.songNotes = notearray;
+			replay.replayGameVer = version;
+			replay.timestamp = Date.now();
+			replay.sf = Conductor.safeFrames;
+			replay.songJudgements = judge;
+		}
 		replay.ana = ana;
 		#end
 	}

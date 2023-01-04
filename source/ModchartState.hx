@@ -588,6 +588,21 @@ class ModchartState
 				allowChanging = PlayStateChangeables.allowCharChange;
 				flags[0] = PlayState.instance.iconP1.isCustom;
 				flags[1] = PlayState.instance.iconP2.isCustom;
+
+				var character:String = PlayState.SONG.player1;
+				if(PlayState.instance.iconP1.isCustom){
+					PlayState.instance.animatedIcons[character] = new HealthIcon(character,true);
+					PlayState.instance.animatedIcons[character].y = PlayState.instance.iconP1.y;
+					PlayState.instance.animatedIcons[character].alpha = 0.001;
+					PlayState.instance.layerIcons.add(PlayState.instance.animatedIcons[character]);
+				}
+				character = PlayState.SONG.player2;
+				if(PlayState.instance.iconP2.isCustom){
+					PlayState.instance.animatedIcons[character+"2"] = new HealthIcon(character,false);
+					PlayState.instance.animatedIcons[character+"2"].y = PlayState.instance.iconP2.y;
+					PlayState.instance.animatedIcons[character+"2"].alpha = 0.001;
+					PlayState.instance.layerIcons.add(PlayState.instance.animatedIcons[character+"2"]);
+				}
 								
 				// callbacks
 	

@@ -410,6 +410,9 @@ class Note extends FlxSprite
 
 			x -= width / 2;
 
+			if(prevNote.specialType == 5)
+					prevNote.offset.x -= 3;
+
 			//if (PlayState.curStage.startsWith('school'))
 			if (style.toLowerCase() == 'pixel')
 				x += 30;

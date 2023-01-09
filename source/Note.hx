@@ -73,7 +73,7 @@ class Note extends FlxSprite
 		flag = playerNote;
 
 		if(flag){
-			if (PlayState.SONG.noteStyle == null) {
+			if (PlayState.instance.style1 == null) {
 				switch(PlayState.storyWeek) {case 6: noteTypeCheck = 'pixel';case 9: noteTypeCheck = 'dance';}
 			} else {noteTypeCheck = PlayState.SONG.noteStyle;}
 		}else{
@@ -150,7 +150,7 @@ class Note extends FlxSprite
 
 		if(flag){
 			if(PlayState.instance.style1 != noteTypeCheck && this.specialType == 0){ //&& !isPixel && PlayState.SONG.noteStyle != 'pixel'){
-					setGraphic(PlayState.SONG.noteStyle);
+					setGraphic(PlayState.instance.style1);
 			}
 			switch(this.specialType){
 			case 1:

@@ -603,6 +603,15 @@ class ModchartState
 					PlayState.instance.animatedIcons[character+"2"].alpha = 0.001;
 					PlayState.instance.layerIcons.add(PlayState.instance.animatedIcons[character+"2"]);
 				}
+				luaSprites.set("bf-" + PlayState.SONG.player2, PlayState.instance.layerBFs.members[0]);
+				idsBF.set("bf-" + PlayState.SONG.player2, 0);
+				if(PlayState.SONG.player1 == "dad"){
+					luaSprites.set("daddy", PlayState.instance.layerChars.members[0]);
+					ids.set("daddy",0);
+				}else{
+					luaSprites.set(PlayState.SONG.player1, PlayState.instance.layerChars.members[0]);
+					ids.set(PlayState.SONG.player1, 0);
+				}
 								
 				// callbacks
 	
@@ -727,9 +736,21 @@ class ModchartState
 						case 'extra':
 							PlayState.instance.bg2.animation.play(animation, force);
 						default:
-							var r = new EReg("^[0-7]", "i");
-							if(!r.match(character) && (ids[character] != null || idsBF[character] != null) && !sprites.exists(character)){
+							/*var r = new EReg("^[0-7]", "i");
+							if(!r.match(character) && (ids[character] != null || idsBF[character.substr(3)] != null) && !sprites.exists(character)){
+							//if(!r.match(character) && getActorByName(character) != null && !sprites.exists(character)){
+								trace("Entro " + character);
 								getActorByName(character).playAnim(animation, force);
+							}*/
+							if(!sprites.exists(character) && ids.exists(character)){
+								trace("Entro rival " + character);
+								PlayState.instance.layerChars.members[ids[character]].playAnim(animation,force);
+							}else{
+								if(character.length > 3)
+									if(!sprites.exists(character) && idsBF.exists(character.substr(3))){
+										trace("Entro jugador " + character.substr(3));
+										PlayState.instance.layerBFs.members[idsBF[character]].playAnim(animation,force);
+									}
 							}
 					}
 				});
@@ -762,6 +783,8 @@ class ModchartState
 							PlayState.instance.animatedIcons[character].alpha = 0.001;
 							//PlayState.instance.animatedIcons[character].cameras = [PlayState.instance.camHUD];
 							PlayState.instance.layerIcons.add(PlayState.instance.animatedIcons[character]);
+							if(!PlayState.instance.colorsMap.exists(character) && bf.colorCode.length > 0)
+								PlayState.instance.colorsMap.set(character, FlxColor.fromRGB(bf.colorCode[0],bf.colorCode[1],bf.colorCode[2]));
 						}
 						PlayState.instance.layerBFs.add(bf);
 						idsBF[character] = PlayState.instance.layerBFs.members.length-1;
@@ -782,6 +805,8 @@ class ModchartState
 							PlayState.instance.animatedIcons[character + "2"].alpha = 0.001;
 							//PlayState.instance.animatedIcons[character + "2"].cameras = [PlayState.instance.camHUD];
 							PlayState.instance.layerIcons.add(PlayState.instance.animatedIcons[character + "2"]);
+							if(!PlayState.instance.colorsMap.exists(character) && char.colorCode.length > 0)
+								PlayState.instance.colorsMap.set(character, FlxColor.fromRGB(char.colorCode[0],char.colorCode[1],char.colorCode[2]));
 						}
 						if(character == "dad")
 							luaSprites.set("daddy", PlayState.instance.layerChars.members[ids[character]]);

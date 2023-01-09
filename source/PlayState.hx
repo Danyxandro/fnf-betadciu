@@ -247,6 +247,7 @@ class PlayState extends MusicBeatState
 	public var dadID:Int = 0;
 	public var bfID:Int = 0;
 	public var ghostTapping:Bool;
+	public var style1:String = "normal";
 	public var style2:String = "normal";
 	public var layerBG:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var trailDad:FlxTrail;
@@ -277,7 +278,7 @@ class PlayState extends MusicBeatState
 	]; //Original values. Valor original del miss es de -.075
 	public var health2:Map<String,Dynamic> = new Map<String,Dynamic>();
 	private var barColors:Array<FlxColor> = [0xFFFF0000, 0xFF66FF33];
-	private var colorsMap:Map<String,FlxColor> = [];
+	public var colorsMap:Map<String,FlxColor> = [];
 	private var musica:FlxSoundAsset;
 	public static var stateSwitch = {state:"freeplay",id:0,allowChanging:true,usedBotplay:false}; //codigo importante aqui XDDDD
 
@@ -1895,6 +1896,16 @@ class PlayState extends MusicBeatState
 			setColorBar(true,SONG.player1);
 			setColorBar(false,SONG.player2);
 		}
+		if(!colorsMap.exists(SONG.player2) && dad.colorCode.length > 0){
+			trace("Sas dad " + dad.colorCode);
+			colorsMap.set(SONG.player2, FlxColor.fromRGB(dad.colorCode[0],dad.colorCode[1],dad.colorCode[2]));
+			setColorBar(false,SONG.player2);
+		}
+		if(!colorsMap.exists(SONG.player1) && boyfriend.colorCode.length > 0){
+			trace("Sas bf " + boyfriend.colorCode);
+			colorsMap.set(SONG.player1, FlxColor.fromRGB(boyfriend.colorCode[0],boyfriend.colorCode[1],boyfriend.colorCode[2]));
+			setColorBar(true,SONG.player1);
+		}
 		//healthBar.createFilledBar(barColors[0],barColors[1]);
 		// healthBar
 		add(healthBar);
@@ -2600,6 +2611,7 @@ class PlayState extends MusicBeatState
 			} else {noteTypeCheck = SONG.noteStyle;}
 
 			SONG.noteStyle = noteTypeCheck;
+			style1 = noteTypeCheck;
 			style2 = noteTypeCheck;
 
 			switch (noteTypeCheck)
@@ -3613,6 +3625,8 @@ class PlayState extends MusicBeatState
 						camFollow.x = layerBFs.members[bfID].getMidpoint().x - 400;
 					case 'bf-pico':
 						camFollow.x = layerBFs.members[bfID].getMidpoint().x - 200;
+					case 'bf-pico-minus':
+						camFollow.x = layerBFs.members[bfID].getMidpoint().x - 300;
 					case 'bf-mami':
 						camFollow.x = layerBFs.members[bfID].getMidpoint().x - 320;
 					case 'bf-tord':
@@ -4213,7 +4227,7 @@ class PlayState extends MusicBeatState
 					spr.animation.play('static');
 					spr.centerOffsets();
 				}/*else{
-					if(spr.animation.curAnim.name == 'confirm' && SONG.noteStyle != 'pixel'){
+					if(spr.animation.curAnim.name == 'confirm' && style1 != 'pixel'){
 						var angle = spr.angle;
 						if (angle > 360)
 							angle -= 360;
@@ -4977,7 +4991,7 @@ class PlayState extends MusicBeatState
 								if(!healthValues.get(""+daNote.specialType).get("damage")){
 									//case 0|4|5|6:
 									playerStrums.members[daNote.noteData].animation.play('confirm', true);
-									if (playerStrums.members[daNote.noteData].animation.curAnim.name == 'confirm' && SONG.noteStyle != 'pixel') //&& !curStage.startsWith('school'))
+									if (playerStrums.members[daNote.noteData].animation.curAnim.name == 'confirm' && style1 != 'pixel') //&& !curStage.startsWith('school'))
 									{
 										playerStrums.members[daNote.noteData].centerOffsets();
 										playerStrums.members[daNote.noteData].offset.x -= 13;
@@ -5031,7 +5045,7 @@ class PlayState extends MusicBeatState
 						if (!holdArray[spr.ID])
 							spr.animation.play('static');
 		 
-						if (spr.animation.curAnim.name == 'confirm' && SONG.noteStyle != 'pixel') //&& !curStage.startsWith('school'))
+						if (spr.animation.curAnim.name == 'confirm' && style1 != 'pixel') //&& !curStage.startsWith('school'))
 						{
 							spr.centerOffsets();
 							spr.offset.x -= 13;
@@ -5850,13 +5864,13 @@ class PlayState extends MusicBeatState
 			case 1:
 				j = 0;
 				k = 4;
-				SONG.noteStyle = Style;
+				style1 = Style;
 			case 2:
 				j = 4;
 				k = 8;
 				style2 = Style;
 			default:
-				SONG.noteStyle = Style;
+				style1 = Style;
 				style2 = Style;
 		}
 		for(i in j...k){

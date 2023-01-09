@@ -29,6 +29,7 @@ class Character extends FlxSprite
 	public var cameraPosition:Array<Float> = [0.0, 0.0];
 	public var isCustom:Bool = false;
 	public var hasFocus:Bool = true;
+	public var colorCode:Array<Int> = [];
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false, ?synchronized:Bool = false)
 	{
@@ -2682,6 +2683,9 @@ class Character extends FlxSprite
 					if(datos.scale != 1){
 						this.scale.set(datos.scale,datos.scale);
 						this.updateHitbox();
+					}
+					if(datos.healthbar_colors != null){
+						this.colorCode = [datos.healthbar_colors[0],datos.healthbar_colors[1],datos.healthbar_colors[2]];
 					}
 					if(datos.playerPosition != null && isPlayer){
 						this.x += datos.playerPosition[0];

@@ -363,11 +363,13 @@ class ChartingState extends MusicBeatState
 		var noteStyleDropDown = new FlxUIDropDownMenuCustom(10, 300, FlxUIDropDownMenuCustom.makeStrIdLabelArray(noteStyles, true), function(noteStyle:String)
 			{
 				_song.noteStyle = noteStyles[Std.parseInt(noteStyle)];
+				PlayState.instance.style1 = noteStyles[Std.parseInt(noteStyle)];
 				updateNoteUI();
 				updateGrid();
 				unlockWheel();
 			},function(isShown:Bool){unlockWheel(!isShown);});
 		noteStyleDropDown.selectedLabel = _song.noteStyle;
+		PlayState.instance.style1 = _song.noteStyle;
 
 		var noteStyleLabel = new FlxText(10,280,64,'Note Skin');
 

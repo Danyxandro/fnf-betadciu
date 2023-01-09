@@ -149,12 +149,12 @@ class Note extends FlxSprite
 		}
 
 		if(flag){
-			if(PlayState.SONG.noteStyle != noteTypeCheck && this.specialType == 0){ //&& !isPixel && PlayState.SONG.noteStyle != 'pixel'){
+			if(PlayState.instance.style1 != noteTypeCheck && this.specialType == 0){ //&& !isPixel && PlayState.SONG.noteStyle != 'pixel'){
 					setGraphic(PlayState.SONG.noteStyle);
 			}
 			switch(this.specialType){
 			case 1:
-				if(PlayState.SONG.noteStyle == 'pixel'){
+				if(PlayState.instance.style1 == 'pixel'){
 					if(noteTypeCheck != "fire-pixel"){
 						setGraphic('fire-pixel');
 					}
@@ -164,7 +164,7 @@ class Note extends FlxSprite
 					}
 				}
 			case 2:
-				if(PlayState.SONG.noteStyle == 'black'){
+				if(PlayState.instance.style1 == 'black'){
 					if(noteTypeCheck != "black-alt"){
 						setGraphic('black-alt');
 					}
@@ -250,25 +250,44 @@ class Note extends FlxSprite
 				antialiasing = true;
 			case 'fire':
 				frames = Paths.getSparrowAtlas('specialNotes/NOTE_fire');
-				animation.addByPrefix('greenScroll', 'green fire0',24,true);
-				animation.addByPrefix('redScroll', 'red fire0',24,true);
-				animation.addByPrefix('blueScroll', 'blue fire0',24,true);
-				animation.addByPrefix('purpleScroll', 'purple fire0',24,true);
 				setGraphicSize(Std.int(width*0.6));
 				updateHitbox();
+				if(FlxG.save.data.downscroll){
+					animation.addByPrefix('greenScroll', 'blue fire0',24,true);
+					animation.addByPrefix('redScroll', 'red fire0',24,true);
+					animation.addByPrefix('blueScroll', 'green fire0',24,true);
+					animation.addByPrefix('purpleScroll', 'purple fire0',24,true);
+					this.flipY = true;
+					offset.y += 161;
+				}else{
+					animation.addByPrefix('greenScroll', 'green fire0',24,true);
+					animation.addByPrefix('redScroll', 'red fire0',24,true);
+					animation.addByPrefix('blueScroll', 'blue fire0',24,true);
+					animation.addByPrefix('purpleScroll', 'purple fire0',24,true);
+					offset.y += 41;
+				}
 				offset.x += 34;
-				offset.y += 41;
+				
 				antialiasing = true;
 			case 'fire-pixel':
 				loadGraphic(Paths.image('specialNotes/NOTE_fire-pixel'),true,21,31);
-				animation.add('purpleScroll', [0,1,2],12,true);
-				animation.add('blueScroll', [3,4,5],12,true);
-				animation.add('greenScroll', [6,7,8],12,true);
-				animation.add('redScroll', [9,10,11],12,true);
 				setGraphicSize(Std.int(width*6));
 				updateHitbox();
+				if(FlxG.save.data.downscroll){
+					animation.add('purpleScroll', [0,1,2],12,true);
+					animation.add('greenScroll', [3,4,5],12,true);
+					animation.add('blueScroll', [6,7,8],12,true);
+					animation.add('redScroll', [9,10,11],12,true);
+					this.flipY = true;
+					offset.y += 66;
+				}else{
+					animation.add('purpleScroll', [0,1,2],12,true);
+					animation.add('blueScroll', [3,4,5],12,true);
+					animation.add('greenScroll', [6,7,8],12,true);
+					animation.add('redScroll', [9,10,11],12,true);
+					offset.y += 26;
+				}
 				offset.x += 19;
-				offset.y += 26;
 				antialiasing =false;
 			case 'hurt':
 				frames = Paths.getSparrowAtlas('specialNotes/HURTNOTE_assets');

@@ -249,7 +249,7 @@ class PlayState extends MusicBeatState
 	public var ghostTapping:Bool;
 	public var style1:String = "normal";
 	public var style2:String = "normal";
-	public var layerBG:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	private var layerBG:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var trailDad:FlxTrail;
 	public var dialogueBG:FlxSprite = new FlxSprite();
 
@@ -1622,7 +1622,7 @@ class PlayState extends MusicBeatState
 				camPos.x=700;
 				camPos.y=300;
 		}
-
+		add(layerBG);
 		if (!PlayStateChangeables.Optimize)
 		{
 		layerGF.add(gf);
@@ -1896,14 +1896,16 @@ class PlayState extends MusicBeatState
 			setColorBar(true,SONG.player1);
 			setColorBar(false,SONG.player2);
 		}
-		if(!colorsMap.exists(SONG.player2) && dad.colorCode.length > 0){
+		if(dad.colorCode.length > 0){
 			trace("Sas dad " + dad.colorCode);
-			colorsMap.set(SONG.player2, FlxColor.fromRGB(dad.colorCode[0],dad.colorCode[1],dad.colorCode[2]));
+			if(!colorsMap.exists(SONG.player2))
+				colorsMap.set(SONG.player2, FlxColor.fromRGB(dad.colorCode[0],dad.colorCode[1],dad.colorCode[2]));
 			setColorBar(false,SONG.player2);
 		}
-		if(!colorsMap.exists(SONG.player1) && boyfriend.colorCode.length > 0){
+		if(boyfriend.colorCode.length > 0){
 			trace("Sas bf " + boyfriend.colorCode);
-			colorsMap.set(SONG.player1, FlxColor.fromRGB(boyfriend.colorCode[0],boyfriend.colorCode[1],boyfriend.colorCode[2]));
+			if(!colorsMap.exists(SONG.player1))
+				colorsMap.set(SONG.player1, FlxColor.fromRGB(boyfriend.colorCode[0],boyfriend.colorCode[1],boyfriend.colorCode[2]));
 			setColorBar(true,SONG.player1);
 		}
 		//healthBar.createFilledBar(barColors[0],barColors[1]);

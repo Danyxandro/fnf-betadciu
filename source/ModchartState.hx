@@ -372,29 +372,26 @@ class ModchartState
 			sprite.animation.addByPrefix(initialAnimation,prefix,24,true);
 			//trace(animationNames[i] +":"+sprite.animation.getByName(animationNames[i]));
 
-			var chars = PlayState.instance.layerChars;
+			/*var chars = PlayState.instance.layerChars;
 			var bfs = PlayState.instance.layerBFs;
-			var gfs = PlayState.instance.layerGF;
+			var gfs = PlayState.instance.layerGF;*/
 
 			@:privateAccess
 			{
 				if (drawBehind)
 				{
-					PlayState.instance.removeObject(gfs);
-					/*PlayState.instance.removeObject(PlayState.boyfriend);
-					PlayState.instance.removeObject(PlayState.dad);*/
+					/*PlayState.instance.removeObject(gfs);
 					PlayState.instance.removeObject(chars);
-					PlayState.instance.removeObject(bfs);
-				}
+					PlayState.instance.removeObject(bfs);*/
+					PlayState.instance.layerBG.add(sprite);
+				}else
 				PlayState.instance.addObject(sprite);
-				if (drawBehind)
+				/*if (drawBehind)
 				{
 					PlayState.instance.addObject(gfs);
-					/*PlayState.instance.addObject(PlayState.boyfriend);
-					PlayState.instance.addObject(PlayState.dad);*/
 					PlayState.instance.addObject(chars);
 					PlayState.instance.addObject(bfs);
-				}
+				}*/
 			}
 			sprites[name] = sprite;
 			luaSprites.set(name,sprite);
@@ -480,29 +477,26 @@ class ModchartState
 		// and I quote:
 		// shitty layering but it works!
 
-		var chars = PlayState.instance.layerChars;
+		/*var chars = PlayState.instance.layerChars;
 		var bfs = PlayState.instance.layerBFs;
-		var gfs = PlayState.instance.layerGF;
+		var gfs = PlayState.instance.layerGF;*/
 
         @:privateAccess
         {
             if (drawBehind)
             {
-                PlayState.instance.removeObject(gfs);
-                /*PlayState.instance.removeObject(PlayState.boyfriend);
-                PlayState.instance.removeObject(PlayState.dad);*/
+                /*PlayState.instance.removeObject(gfs);
 				PlayState.instance.removeObject(chars);
-                PlayState.instance.removeObject(bfs);
-            }
+                PlayState.instance.removeObject(bfs);*/
+				PlayState.instance.layerBG.add(sprite);
+            }else
             PlayState.instance.addObject(sprite);
-            if (drawBehind)
+            /*if (drawBehind)
             {
                 PlayState.instance.addObject(gfs);
-                /*PlayState.instance.addObject(PlayState.boyfriend);
-                PlayState.instance.addObject(PlayState.dad);*/
 				PlayState.instance.addObject(chars);
                 PlayState.instance.addObject(bfs);
-            }
+            }*/
         }
 		#end
 		return toBeCalled;

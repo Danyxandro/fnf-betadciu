@@ -275,7 +275,7 @@ class ModchartState
 							changeIcon(id,false, PlayState.instance.layerChars.members[ids[id]].isCustom);
 						}
 					}
-					if(!allowChanging){
+					if(!PlayStateChangeables.allowCharChange){
 						if(PlayState.instance.animatedIcons["default2"].animation.getByName(id) != null){
 							changeIcon(id,false);
 						}else
@@ -314,7 +314,7 @@ class ModchartState
 							changeIcon(id,true, PlayState.instance.layerBFs.members[idsBF[id]].isCustom);
 						}
 					}
-					if(!allowChanging){
+					if(!PlayStateChangeables.allowCharChange){
 						if(PlayState.instance.animatedIcons["default1"].animation.getByName(id) != null){
 							changeIcon(id,true);
 						}else
@@ -922,10 +922,12 @@ class ModchartState
 					}
 				});
 
-				Lua_helper.add_callback(lua, "allowCharacterChanging", function(?setting:Bool):Bool{
-					if(setting != null)
-						allowChanging = setting;
+				Lua_helper.add_callback(lua, "allowCharacterChanging", function():Bool{
 					return allowChanging;
+				});
+
+				Lua_helper.add_callback(lua, "setCharacterChanging", function(setting:Bool){
+					allowChanging = setting;
 				});
 
 				Lua_helper.add_callback(lua, "syncChar", function(id:String,synchronous:Bool,isPlayer:Bool){

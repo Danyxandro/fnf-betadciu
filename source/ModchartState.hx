@@ -1096,10 +1096,12 @@ class ModchartState
 				});
 
 				Lua_helper.add_callback(lua,"characterFocusFactor", function(distance:Float) {
-					var d:Float = distance;
-					if(distance < 0)
-						d = distance * -1;
-					PlayState.instance.camFactor = d;
+					if(!PlayStateChangeables.Optimize){
+						var d:Float = distance;
+						if(distance < 0)
+							d = distance * -1;
+						PlayState.instance.camFactor = d;
+					}
 				});
 
 				Lua_helper.add_callback(lua,"tweenStrumAngle", function(id:Int, toAngle:Int, time:Float, ?finalAngle:Int) {

@@ -318,6 +318,12 @@ class PlayState extends MusicBeatState
 		else
 			PlayStateChangeables.allowCharChange = false;
 
+		if(PlayStateChangeables.Optimize){
+			PlayStateChangeables.allowCharChange = false;
+			SONG.stage = "none";
+			camFactor = 0;
+		} 
+
 		// pre lowercasing the song name (create)
 		var songLowercase = StringTools.replace(PlayState.SONG.song, " ", "-").toLowerCase();
 		switch (songLowercase) {
@@ -329,8 +335,8 @@ class PlayState extends MusicBeatState
 
 		#if windows
 		executeModchart = FileSystem.exists(Paths.lua(songLowercase  + "/modchart"));
-		if (executeModchart)
-			PlayStateChangeables.Optimize = false;
+		/*if (executeModchart)
+			PlayStateChangeables.Optimize = false;*/
 		#end
 		#if !cpp
 		executeModchart = false; // FORCE disable for non cpp targets
@@ -1288,6 +1294,72 @@ class PlayState extends MusicBeatState
 					}*/
 
 			}
+			case 'ms-mediocre': 
+			{
+				curStage = 'ms-mediocre';
+
+				var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('ms-mediocre/sky', 'week3'));
+				bg.scrollFactor.set(0.1, 0.1);
+				add(bg);
+
+				var city:FlxSprite = new FlxSprite(-10).loadGraphic(Paths.image('ms-mediocre/city', 'week3'));
+				city.scrollFactor.set(0.3, 0.3);
+				city.setGraphicSize(Std.int(city.width * 0.85));
+				city.updateHitbox();
+				add(city);
+
+				phillyCityLights = new FlxTypedGroup<FlxSprite>();
+				if(FlxG.save.data.distractions){
+					add(phillyCityLights);
+				}
+
+				for (i in 0...5)
+				{
+					var light:FlxSprite = new FlxSprite(city.x).loadGraphic(Paths.image('ms-mediocre/win' + i, 'week3'));
+					light.scrollFactor.set(0.3, 0.3);
+					light.visible = false;
+					light.setGraphicSize(Std.int(light.width * 0.85));
+					light.updateHitbox();
+					light.antialiasing = true;
+					phillyCityLights.add(light);
+				}
+
+				var streetBehind:FlxSprite = new FlxSprite(-40, 50).loadGraphic(Paths.image('ms-mediocre/behindTrain','week3'));
+				add(streetBehind);
+
+				phillyTrain = new FlxSprite(2000, 360).loadGraphic(Paths.image('ms-mediocre/train','week3'));
+				if(FlxG.save.data.distractions){
+					add(phillyTrain);
+				}
+
+				trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes','week3'));
+				FlxG.sound.list.add(trainSound);
+
+				// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
+
+				var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('ms-mediocre/street','week3'));
+				add(street);
+			}
+			case 'annieCave':
+			{
+				curStage = 'annieCave';
+				var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('annieCave/evilBG','week5'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.2, 0.2);
+				bg.active = false;
+				bg.setGraphicSize(Std.int(bg.width * 0.8));
+				bg.updateHitbox();
+				add(bg);
+
+				var evilTree:FlxSprite = new FlxSprite(300, -300).loadGraphic(Paths.image('annieCave/evilTree','week5'));
+				evilTree.antialiasing = true;
+				evilTree.scrollFactor.set(0.2, 0.2);
+				add(evilTree);
+
+				var evilSnow:FlxSprite = new FlxSprite(-200, 700).loadGraphic(Paths.image("annieCave/evilSnow",'week5'));
+					evilSnow.antialiasing = true;
+				add(evilSnow);
+			}
 			case 'stage':
 				{
 						defaultCamZoom = 0.9;
@@ -1462,6 +1534,8 @@ class PlayState extends MusicBeatState
 				curStage = 'stage';
 			case '8th-layer':
 				curStage = '8th-layer';
+			case "ms-mediocre" | "annieCave":
+			{}
 			default:
 				curStage = 'stage';
 		}
@@ -1574,10 +1648,18 @@ class PlayState extends MusicBeatState
 
 			case 'mall':
 				boyfriend.x += 200;
-
+			case 'philly':
+				camPos.x += 600;
+				camPos.y += 130;
 			case 'mallEvil':
 				boyfriend.x += 320;
 				dad.y -= 80;
+			case "annieCave":
+				boyfriend.x += 320;
+				camPos.y -= 100;
+			case 'ms-mediocre':
+				camPos.x += 600;
+				camPos.y -= 130;
 			case 'school':
 				boyfriend.x += 200;
 				boyfriend.y += 220;
@@ -1623,9 +1705,16 @@ class PlayState extends MusicBeatState
 				camPos.y=300;
 		}
 		add(layerBG);
+		layerGF.add(gf);
+		layerChars.add(dad);
+		layerBFs.add(boyfriend);
+		if(PlayStateChangeables.singCam){
+			posiciones[0] = layerBFs.members[bfID].getMidpoint().y + 300;
+			posiciones[1] = layerChars.members[dadID].getMidpoint().y - 100;
+		}
 		if (!PlayStateChangeables.Optimize)
 		{
-		layerGF.add(gf);
+		
 		add(layerGF);
 
 		// Shitty layering but whatev it works LOL
@@ -1651,15 +1740,8 @@ class PlayState extends MusicBeatState
 			case 'portal1':
 				gf.alpha = 0;
 		}
-		layerChars.add(dad);
-		layerBFs.add(boyfriend);
 		add(layerChars);
 		add(layerBFs);
-
-		if(PlayStateChangeables.singCam){
-			posiciones[0] = layerBFs.members[bfID].getMidpoint().y + 300;
-			posiciones[1] = layerChars.members[dadID].getMidpoint().y - 100;
-		}
 
 		switch(SONG.stage){
 				case 'newgrounds' | 'newgrounds2':
@@ -2542,8 +2624,8 @@ class PlayState extends MusicBeatState
 
 				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, false, gottaHitNote, daType);
 
-				if (!gottaHitNote && PlayStateChangeables.Optimize)
-					continue;
+				/*if (!gottaHitNote && PlayStateChangeables.Optimize)
+					continue;*/
 
 				swagNote.sustainLength = songNotes[2];
 				swagNote.scrollFactor.set(0, 0);
@@ -2605,8 +2687,8 @@ class PlayState extends MusicBeatState
 			//defaults if no noteStyle was found in chart
 			var noteTypeCheck:String = 'normal';
 
-			if (PlayStateChangeables.Optimize && player == 0)
-				continue;
+			/*if (PlayStateChangeables.Optimize && player == 0)
+				continue;*/
 		
 			if (SONG.noteStyle == null) {
 				switch(storyWeek) {case 6: noteTypeCheck = 'pixel';case 9: noteTypeCheck = 'dance';}
@@ -2898,6 +2980,9 @@ class PlayState extends MusicBeatState
 			{
 				babyArrow.y -= 10;
 				babyArrow.alpha = 0;
+				if (PlayStateChangeables.Optimize && player == 0){
+					FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 0.5}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
+				}else
 				FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
 			}
 
@@ -2915,8 +3000,17 @@ class PlayState extends MusicBeatState
 			babyArrow.x += 50;
 			babyArrow.x += ((FlxG.width / 2) * player);
 
-			if (PlayStateChangeables.Optimize)
-				babyArrow.x -= 275;
+			if (PlayStateChangeables.Optimize){
+				if(player == 0){
+					if(i < 2)
+						babyArrow.x += ((FlxG.width / 2) - 325 - Note.swagWidth * 2);
+					else
+						babyArrow.x += ((FlxG.width / 2) - 125 + Note.swagWidth);
+				}else{
+					babyArrow.x -= 275;
+				}
+			}
+				
 			
 			cpuStrums.forEach(function(spr:FlxSprite)
 			{					
@@ -3119,7 +3213,7 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
-			case 'philly':
+			case 'philly' | "ms-mediocre":
 				if (trainMoving && !PlayStateChangeables.Optimize)
 				{
 					trainFrameTiming += elapsed;
@@ -3694,6 +3788,25 @@ class PlayState extends MusicBeatState
 					}
 				}
 			}
+			}else{
+				if (camFollow.x != layerBFs.members[bfID].getMidpoint().x - 350)
+					camFollow.setPosition(layerBFs.members[bfID].getMidpoint().x - 350, layerBFs.members[bfID].getMidpoint().y - 200);
+
+				#if windows
+				if(PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection){
+					mustHitSection = true;
+					if (luaModchart != null)
+					{
+						luaModchart.executeState('playerOneTurn', []);
+					}
+				}else{
+					mustHitSection = false;
+					if (luaModchart != null)
+					{
+						luaModchart.executeState('playerTwoTurn', []);
+					}
+				}
+				#end
 			}//fin del 3er optimize
 		}
 
@@ -4075,22 +4188,25 @@ class PlayState extends MusicBeatState
 						notes.remove(daNote, true);
 						daNote.destroy();
 					}
-
+					var dataNumber:Int = Math.floor(Math.abs(daNote.noteData));
 					if (daNote.mustPress && !daNote.modifiedByLua)
 					{
-						daNote.visible = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].visible;
-						daNote.x = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
+						daNote.visible = playerStrums.members[dataNumber].visible;
+						daNote.x = playerStrums.members[dataNumber].x;
 						if (!daNote.isSustainNote)
-							daNote.angle = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
-						daNote.alpha = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].alpha;
+							daNote.angle = playerStrums.members[dataNumber].angle;
+						daNote.alpha = playerStrums.members[dataNumber].alpha;
 					}
 					else if (!daNote.wasGoodHit && !daNote.modifiedByLua)
 					{
-						daNote.visible = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].visible;
-						daNote.x = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].x;
+						daNote.visible = strumLineNotes.members[dataNumber].visible;
+						daNote.x = strumLineNotes.members[dataNumber].x;
 						if (!daNote.isSustainNote)
-							daNote.angle = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].angle;
-						daNote.alpha = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].alpha;
+							daNote.angle = strumLineNotes.members[dataNumber].angle;
+						if(PlayStateChangeables.Optimize && strumLineNotes.members[dataNumber].alpha > 0.5){
+							strumLineNotes.members[dataNumber].alpha = 0.5;
+						}
+						daNote.alpha = strumLineNotes.members[dataNumber].alpha;
 					}
 					
 					
@@ -5759,7 +5875,7 @@ class PlayState extends MusicBeatState
 						if (FlxG.random.bool(10) && fastCarCanDrive)
 							fastCarDrive();
 				}
-			case "philly":
+			case "philly" | "ms-mediocre":
 				if(FlxG.save.data.distractions){
 					if (!trainMoving)
 						trainCooldown += 1;

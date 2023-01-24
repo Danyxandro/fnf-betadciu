@@ -352,7 +352,7 @@ class FreeplayBetadciuState extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = songs[curSelected].week;
-			if(songs[curSelected].message == "warning"){
+			if(songs[curSelected].message == "warning" && FlxG.save.data.enableCharchange && !FlxG.save.data.optimize){
 				openSubState(new WarningSubstate());
 			}else{
 			trace('CUR WEEK' + PlayState.storyWeek);

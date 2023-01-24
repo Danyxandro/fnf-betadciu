@@ -1,5 +1,6 @@
 -- this gets called starts when the level loads.
 function start(song) -- arguments, the song name
+	setCharacterChanging(true)
 	loadCharacter("keen-flying",100,50)	
 	visibleChar("keen-flying",true,false)
 end

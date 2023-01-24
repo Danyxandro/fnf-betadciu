@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\assets\\preload",
-    "\\assets\\preload\\data",
     "\\source"
   ],
+  "SelectedNode": "\\source\\Paths.hx",
   "PreviewInSolutionExplorer": false
 }

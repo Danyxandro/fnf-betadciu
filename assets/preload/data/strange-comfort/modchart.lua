@@ -1,8 +1,8 @@
 -- this gets called starts when the level loads.
 function start(song) -- arguments, the song name
+	setCharacterChanging(true)
 	loadCharacter("keen-flying",100,50)
     changeDadCharacter("keen-flying",false,"dance")
-	
 end
 
 -- this gets called every frame
